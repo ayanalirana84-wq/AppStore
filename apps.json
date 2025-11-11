@@ -5,8 +5,8 @@
     "apk": "ProxisRonzStore.apk"
   },
   {
-    "name": "WinRAR",
-    "image": "rar.jpg",
-    "apk": "WinrarRonzStore.apk"
+    "name": "Termux",
+    "image": "termux.png",
+    "apk": "TermuxRonzStore.apk"
   }
 ]

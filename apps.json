@@ -1,12 +1,16 @@
 [
   {
-    "name": "Proxis",
-    "image": "proxis.jpg",
-    "apk": "ProxisRonzStore.apk"
-  },
-  {
     "name": "Termux",
     "image": "termux.png",
-    "apk": "TermuxRonzStore.apk"
+    "apk": "https://f-droid.org/repo/com.termux_1002.apk",
+    "downloadName": "TermuxRonzStore.apk",
+    "badge": "Featured"
+  },
+  {
+    "name": "Proxis",
+    "image": "proxis.png",
+    "apk": "proxis.apk",
+    "downloadName": "Proxis_RonzStore.apk",
+    "badge": "Featured"
   }
 ]

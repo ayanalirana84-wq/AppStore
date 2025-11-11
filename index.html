@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RonzStore - APK Store</title>
+<style>
+/* --- CSS from earlier full code --- */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;background:radial-gradient(circle at top,#dbeafe,#f9fbff);color:#0a1f44;}
+header{text-align:center;padding:60px 20px;background:linear-gradient(135deg,#2563eb,#1e3a8a);color:#fff;border-bottom-left-radius:80px;border-bottom-right-radius:80px;box-shadow:0 8px 25px rgba(0,0,0,0.15);}
+header h1{font-size:2.8rem;font-weight:700;}
+header p{font-size:1.1rem;opacity:0.9;}
+.apk-list{display:flex;flex-wrap:wrap;justify-content:center;gap:40px;padding:60px 20px;}
+.apk-card{position:relative;width:280px;padding:25px 20px;background:rgba(255,255,255,0.45);backdrop-filter:blur(15px);border-radius:25px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.1);transition:transform 0.4s ease,box-shadow 0.4s ease;}
+.apk-card:hover{transform:translateY(-12px) scale(1.02);box-shadow:0 20px 40px rgba(37,99,235,0.25);}
+.apk-card img{width:170px;height:170px;border-radius:25%;object-fit:cover;margin-bottom:15px;transition:transform 0.4s;}
+.apk-card:hover img{transform:scale(1.1);}
+.apk-card h3{font-size:22px;color:#1e3a8a;margin-bottom:10px;font-weight:600;}
+.apk-card a{display:inline-block;padding:12px 30px;font-size:15px;font-weight:600;color:#fff;text-decoration:none;border-radius:30px;background:linear-gradient(90deg,#2563eb,#1e40af);box-shadow:0 5px 15px rgba(37,99,235,0.4);transition:0.3s ease;}
+.apk-card a:hover{background:linear-gradient(90deg,#1e40af,#2563eb);box-shadow:0 8px 25px rgba(37,99,235,0.6);transform:scale(1.05);}
+.featured-badge{position:absolute;top:15px;right:15px;background:linear-gradient(90deg,#0072ff,#00c6ff);color:#fff;padding:8px 20px;font-size:13px;font-weight:700;border-radius:30px;letter-spacing:1px;box-shadow:0 0 15px rgba(0,174,255,0.7);text-transform:uppercase;overflow:hidden;animation:pulse 2.5s infinite,glow 3s infinite alternate;}
+.featured-badge::after{content:"";position:absolute;top:0;left:-50%;width:50%;height:100%;background:rgba(255,255,255,0.4);transform:skewX(-20deg);animation:shimmer 2s infinite;}
+@keyframes shimmer{0%{left:-50%;}100%{left:120%;}}
+@keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.08);}100%{transform:scale(1);}}
+@keyframes glow{0%{box-shadow:0 0 10px rgba(0,174,255,0.6);}100%{box-shadow:0 0 25px rgba(0,174,255,1);} }
+footer{text-align:center;padding:40px 20px;background:#1e3a8a;color:#fff;font-size:14px;border-top:4px solid #2563eb;}
+@media(max-width:768px){.apk-card{width:85%;}}
+</style>
+</head>
+<body>
+<header>
+<h1>RonzStore</h1>
+<p>Download your favorite APKs instantly ⚡</p>
+</header>
+<div class="apk-list" id="apkList">Loading apps...</div>
+<footer>© 2025 RonzStore — Built by RonzDavil 🚀</footer>
+<script>
+fetch('apps.json')
+  .then(res => res.json())
+  .then(apps => {
+    const container = document.getElementById("apkList");
+    container.innerHTML = "";
+    apps.forEach(app => {
+      const card = document.createElement("div");
+      card.className = "apk-card";
+      const imgSrc = app.image ? app.image : "https://via.placeholder.com/200x200?text=No+Image";
+      card.innerHTML = `
+        <div class="featured-badge">Featured</div>
+        <img src="${imgSrc}" alt="${app.name}">
+        <h3>${app.name}</h3>
+        <a href="${app.apk}" download>Download APK</a>
+      `;
+      container.appendChild(card);
+    });
+  })
+  .catch(err => {
+    document.getElementById("apkList").innerText = "Failed to load apps 😢";
+    console.error(err);
+  });
+</script>
+</body>
+</html>

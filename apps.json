@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Proxis",
+    "image": "proxis.jpg",
+    "apk": "ProxisRonzStore.apk"
+  },
+  {
+    "name": "WinRAR",
+    "image": "rar.jpg",
+    "apk": "WinrarRonzStore.apk"
+  }
+]
